@@ -31,18 +31,6 @@ object Show {
 
   implicit class ShowOps[A](a: A) {
     def show(implicit ev: Show[A]): String = ev.show(a)
-
-
-    /** Transform list of `A` into `String` with custom separator, beginning and ending.
-     *  For example: "[a, b, c]" from `List("a", "b", "c")`
-     *
-     *  @param separator. ',' in above example
-     *  @param begin. '[' in above example
-     *  @param end. ']' in above example
-     */
-    def mkString_(list: List[A], separator: String, begin: String, end: String)(implicit ev: Show[A]): String = {
-      list.map(ev.show).mkString(begin,separator,end)
-    }
   }
 
   // 4. Helper constructors
